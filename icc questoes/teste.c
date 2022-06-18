@@ -1,11 +1,17 @@
 #include <stdio.h>
+#include <stdlib.h>
+#include <time.h>
 
 int main(){
 
-    long teste;
-    teste = 6000000000;
-    printf("%li \n", teste);
-    printf("teste");
+    srand(time(NULL));
+
+    int valor, flag = 0;
+
+    while(flag == 0){
+        valor = (rand() % 2) + 1;
+        printf("%d", valor);
+    }
 
     return 0;
 }

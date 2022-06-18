@@ -2,7 +2,7 @@
 #include <stdlib.h>
 
 int **ler_matriz(int linhas, int colunas){
-	int **mat;
+    int **mat;
 	mat = (int **)malloc(linhas * sizeof(int *));
 	for(int i = 0; i<linhas; i++){
 		mat[i] = (int *)malloc(colunas * sizeof(int));
@@ -19,12 +19,21 @@ int **ler_matriz(int linhas, int colunas){
 
 
 void somar_matrizes(int **mat1, int **mat2, int linhas, int colunas){
+    int **soma;
+    soma = (int **)malloc(linhas * sizeof(int *));
+    for(int i=0; i<linhas; i++){
+        soma[i] = (int *)malloc(colunas * sizeof(int));
+    }
 
     for(int i=0; i<linhas; i++){
         for(int j=0; j<colunas; j++){
-            mat1[i][j] = mat1[i][j] + mat2[i][j];
+            soma[i][j] = mat1[i][j] + mat2[i][j];
         }
+        printf("teste4\n");
     }
+    imprimir_matriz(soma, linhas, colunas);
+
+    printf("teste3\n");
 
 }
 
@@ -46,17 +55,28 @@ void liberar_matriz(int **mat, int linhas){
 
 int main(void)
 {
-	int linhas, colunas, **mat1, **mat2;
-	scanf("%d %d", &linhas, &colunas);
-    printf("\n");
-	mat1 = ler_matriz(linhas, colunas);
-    mat2 = ler_matriz(linhas, colunas);
+	int ***matrizes, qmats, linhas, colunas, **mat;
 
-    somar_matrizes(mat1, mat2, linhas, colunas);
+    scanf("%d", &qmats);
+    scanf("%d %d", &linhas, &colunas);
 
-    imprimir_matriz(mat1, linhas, colunas);
-	
-    liberar_matriz(mat1, linhas);
-    liberar_matriz(mat2, linhas);
+    if(linhas != colunas || qmats < 0){
+        return 0;
+    }
+
+    
+    for(int i=0; i<qmats; i++){
+        mat = ler_matriz(linhas, colunas);
+        matrizes[i] = mat;
+    }
+
+    int a, b, flag = 0;
+
+
+    while(a != 0 && b != 0){
+        scanf("%d %d", &a, &b);
+        somar_matrizes(matrizes[a], matrizes[b], linhas, colunas);
+        
+    }
     
 }
