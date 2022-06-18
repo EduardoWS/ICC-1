@@ -18,11 +18,7 @@ int **ler_matriz(int linhas, int colunas){
 }
 
 void somar_matrizes(int **mat1, int **mat2, int linhas, int colunas){
-    /*int **soma;
-    soma = (int **)malloc(linhas * sizeof(int *));
-    for(int i=0; i<linhas; i++){
-        soma[i] = (int *)malloc(colunas * sizeof(int));
-    }*/
+    
     for(int i=0; i<linhas; i++){
         for(int j=0; j<colunas; j++){
             mat1[i][j] = mat1[i][j] + mat2[i][j];
@@ -52,6 +48,8 @@ void liberar_matriz(int **mat, int linhas){
 int main(void)
 {
 	int ***matrizes, qmats, linhas, colunas, **mat;
+
+    matrizes = (int ***)malloc(qmats * sizeof(int **));
 
     scanf("%d", &qmats);
     scanf("%d %d", &linhas, &colunas);
@@ -84,6 +82,6 @@ int main(void)
         liberar_matriz(matrizes[i], linhas);
     }
 
-   //liberar_matriz(matrizes[0], linhas);
-
+    //liberar_matriz(matrizes[0], linhas);
+    return 0;
 }
