@@ -71,5 +71,8 @@ int main(void)
     liberar_matriz(mat1, linhas);
     liberar_matriz(mat2, linhas);
     liberar_matriz(matresult, linhas);
+
+
+    return 0;
     
 }
